@@ -49,7 +49,7 @@ class ButtonFunctions(MainWindow):
 
     def run_move_files(self):
         if os.path.isdir(self.src_path_line_edit.text()) and os.path.isdir(self.dest_path_line_edit.text()):
-            move_files()
+            move_files(self.dest_path_line_edit.text())
             self.label_result_organize.setText("Completed Successfuly")
         else:
             self.label_result_organize.setText("Define source and destination directories!!!")

@@ -69,8 +69,8 @@ def create_folders():
 
 
 
-def dest_folders_list():
-    dest_dir = r"C:\Testing\Destination"
+def dest_folders_list(dest_dir):
+    # dest_dir = r"C:\Testing\Destination"
 
     file_types_attributes = [
             ("gallery","photos", photos),
@@ -90,8 +90,8 @@ def dest_folders_list():
 
 # | Function that is executed on the        |
 # | event of modifying the source directory |
-def move_files():
-    dest_folders_list()
+def move_files(dest_dir):
+    dest_folders_list(dest_dir)
     print(file_types)
 
     for file in os.listdir(src_dir):
@@ -103,7 +103,6 @@ def move_files():
             print(file_extension)
             
             dest_other = dest_dir + r"/Other"
-            print(dest_dir, "nothing")
             destination = dest_other
             
             print(file_types)
@@ -112,7 +111,6 @@ def move_files():
                     
                     destination = globals()["dest_" + category]
                     # Define destination directories(folders) bcuz now itr shows none if move fil
-                    print(destination, "not nothing")
                     break
 
             print(destination, file)
@@ -133,6 +131,8 @@ def move_files():
                         shutil.move(file_path, destination_path)
                     else:
                         # ADD ERROR TO SHOW UP ON THE SCREEN
+                        shutil.move(file_path, destination_path)
+                        print("wth")
                         pass
                 else:
                     print("1")
