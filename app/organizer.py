@@ -134,6 +134,7 @@ def move_files(dest_dir):
                         shutil.move(file_path, destination_path)
                         print("wth")
                         pass
+                    
                 else:
                     print("1")
             except PermissionError:
