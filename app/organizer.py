@@ -6,24 +6,26 @@ from watchdog.events import FileSystemEventHandler
 
 src_dir = None
 
-def modify_src(new_value):
+def modify_src(new_value: str):
     global src_dir
     src_dir = new_value
     print(src_dir)
 
 dest_dir = None
 
-def modify_dest(new_value):
+def modify_dest(new_value: str):
     global dest_dir
     dest_dir = new_value
     print(dest_dir)
 
-dest_zip, dest_documents, dest_photos, dest_videos, dest_codes, dest_threeD, dest_applications, dest_other = [None] * 8
+(dest_zip, dest_documents, dest_photos, dest_videos, 
+dest_codes, dest_threeD, dest_applications, dest_other) = [None] * 8
 folders = []
 file_types = dict()
 
-# DESTINATION FOLDERS AND EXTENSIONS FOR THEM
-def define_chosen_directories(checked_boxes):
+# DEFINES FOLDERS TO BE CREATED IF DESTINATION DIRECTORY 
+# IS EMPTY AND USER CHOSE TO CREATE THEM
+def define_chosen_directories(checked_boxes: list):
     checked_copy = checked_boxes[:]
     checked_copy.insert(0, checked_boxes[0])
 
@@ -49,7 +51,7 @@ def define_chosen_directories(checked_boxes):
                 checked_copy.pop(0)
         print("done")
 
-# | File types to match directories above |
+# | File extensions to use while sorting |
 zips = ["zip"]
 documents = ["xlsx", "pdf", "txt", "pptx", "docx"]
 photos = ["png", "jpg", "jpeg", "jpeg", "bmp", "gif", "tiff ", "tif", "raw", "cr2", "nef", "arw", "psd"]
@@ -58,19 +60,12 @@ codes = ['py', 'cpp', 'c', 'java', 'html', 'css', 'js', 'php', 'rb', 'swift', "s
 threeD = ['obj', 'stl', 'fbx', 'blend', 'dae', '3ds', 'ply', 'max', 'ma', 'x3d', "blend1"]
 applications = ['exe', 'dmg', 'apk', 'app', 'deb', 'rpm', 'msi', 'bin', 'jar', 'sh']
 
-
-# | One time function to create              |
-# | the folders in the destination directory |
+# FUNCTION TO CREATE FOLDERS IN TEH DIRECTORY PATH(FOLDER)
 def create_folders():
-    # | Creates path in the destination directory |
-    # | so it then can be used to move files into |
     for folder_path in folders:
         os.makedirs(folder_path, exist_ok=True)
 
-
-
-def dest_folders_list(dest_dir):
-    # dest_dir = r"C:\Testing\Destination"
+def dest_folders_list(dest_dir: str):
 
     file_types_attributes = [
             ("gallery","photos", photos),
@@ -88,9 +83,7 @@ def dest_folders_list(dest_dir):
                 globals()["dest_" + category] = dest_dir + "/" + folder
                 file_types.update({category: extension})
 
-# | Function that is executed on the        |
-# | event of modifying the source directory |
-def move_files(dest_dir):
+def move_files(dest_dir: str):
     dest_folders_list(dest_dir)
     print(file_types)
 
@@ -108,9 +101,7 @@ def move_files(dest_dir):
             print(file_types)
             for category, extensions in file_types.items():
                 if file_extension in extensions:
-                    
                     destination = globals()["dest_" + category]
-                    # Define destination directories(folders) bcuz now itr shows none if move fil
                     break
 
             print(destination, file)
@@ -130,11 +121,7 @@ def move_files(dest_dir):
 
                         shutil.move(file_path, destination_path)
                     else:
-                        # ADD ERROR TO SHOW UP ON THE SCREEN
                         shutil.move(file_path, destination_path)
-                        print("wth")
-                        pass
-                    
                 else:
                     print("1")
             except PermissionError:
