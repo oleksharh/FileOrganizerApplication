@@ -20,16 +20,14 @@ def modify_dest(new_value):
 
 dest_zip, dest_documents, dest_photos, dest_videos, dest_codes, dest_threeD, dest_applications, dest_other = [None] * 8
 folders = []
+file_types = dict()
 
 # DESTINATION FOLDERS AND EXTENSIONS FOR THEM
-#_______________________________________________________________________________________________________________________
-# | Destination directories, rename them as you wish to match your needs |     
 def define_chosen_directories(checked_boxes):
     checked_copy = checked_boxes[:]
     checked_copy.insert(0, checked_boxes[0])
-    checked_copy.append(True)
 
-    if dest_dir is not None and src_dir is not None:       
+    if dest_dir is not None and src_dir is not None:
 
         dest_to_create = {
             'dest_photos': dest_dir + r"/Gallery/Photos",
@@ -38,8 +36,7 @@ def define_chosen_directories(checked_boxes):
             'dest_documents': dest_dir + r"/Documents",
             'dest_codes': dest_dir + r"/Codes",
             'dest_threeD': dest_dir + r"/3D",
-            'dest_applications': dest_dir + r"/Applications",
-            'dest_other': dest_dir + r"/Other"
+            'dest_applications': dest_dir + r"/Applications"
         }
 
         for variable, path in dest_to_create.items():
@@ -50,6 +47,7 @@ def define_chosen_directories(checked_boxes):
                 print(folders)
             else:
                 checked_copy.pop(0)
+        print("done")
 
 # | File types to match directories above |
 zips = ["zip"]
@@ -70,23 +68,31 @@ def create_folders():
         os.makedirs(folder_path, exist_ok=True)
 
 
+
+def dest_folders_list():
+    dest_dir = r"C:\Testing\Destination"
+
+    file_types_attributes = [
+            ("gallery","photos", photos),
+            ("gallery", "videos", videos),
+            ("zip", "zip", zips),
+            ("documents", "documents", documents),
+            ("codes", "codes", codes),
+            ("3d","threeD", threeD),
+            ("applications", "applications", applications),
+            ]
+
+    for folder in os.listdir(dest_dir):
+        for folder_name, category, extension in file_types_attributes:
+            if folder.lower() == folder_name:
+                globals()["dest_" + category] = dest_dir + "/" + folder
+                file_types.update({category: extension})
+
 # | Function that is executed on the        |
 # | event of modifying the source directory |
 def move_files():
-
-    file_types = {
-        "documents": documents,
-        "photos": photos,
-        "videos": videos,
-        "codes": codes,
-        "threeD": threeD,
-        "applications": applications,
-        "zip": zips
-        # |Change the name of the keys  |
-        # |to match the folder name for |
-        # |your custom folder that you  |
-        # |have created earlier         |
-    }
+    dest_folders_list()
+    print(file_types)
 
     for file in os.listdir(src_dir):
 
@@ -94,14 +100,22 @@ def move_files():
 
         if os.path.isfile(file_path):
             file_extension = file.split('.')[-1].lower()
-
+            print(file_extension)
+            
+            dest_other = dest_dir + r"/Other"
+            print(dest_dir, "nothing")
             destination = dest_other
-
+            
+            print(file_types)
             for category, extensions in file_types.items():
                 if file_extension in extensions:
+                    
                     destination = globals()["dest_" + category]
+                    # Define destination directories(folders) bcuz now itr shows none if move fil
+                    print(destination, "not nothing")
                     break
 
+            print(destination, file)
             destination_path = os.path.join(destination, file)
 
             try:
@@ -118,16 +132,14 @@ def move_files():
 
                         shutil.move(file_path, destination_path)
                     else:
-                        shutil.move(file_path, destination_path)
+                        # ADD ERROR TO SHOW UP ON THE SCREEN
+                        pass
                 else:
-                    time.sleep(1)
-                    move_files(src_dir)
+                    print("1")
             except PermissionError:
-                time.sleep(1)
-                move_files(src_dir)
+                print("2")
             except FileNotFoundError:
-                time.sleep(1)
-                move_files(src_dir)
+                print("3")
 
 # if __name__ == "__main__":
 
