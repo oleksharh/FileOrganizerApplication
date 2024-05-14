@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QFileDialog
 from app.organizer import modify_dest, define_chosen_directories, modify_src, create_folders, move_files
 from app.ui_modifications import MainWindow
 import os
-from PyQt5.uic import loadUi
+from PyQt5.QtCore import QTimer
 
 class ButtonFunctions(MainWindow):
     def __init__(self):
@@ -18,6 +18,13 @@ class ButtonFunctions(MainWindow):
         folder_path = QFileDialog.getExistingDirectory(self, "Choose Source Folder", r"C:/")
         if folder_path:
             self.src_path_line_edit.setText(folder_path)
+            new_value_src = self.src_path_line_edit.text()
+            modify_src(new_value_src)
+
+            new_value_dest = self.dest_path_line_edit.text()
+            modify_dest(new_value_dest)
+            self.label_description_src.setText(new_value_src)
+            self.label_description_dest.setText(new_value_dest)
 
     def dest_browse_button(self):
         folder_path = QFileDialog.getExistingDirectory(self, "Choose Destination Folder", r"C:/")
@@ -47,7 +54,8 @@ class ButtonFunctions(MainWindow):
             
             self.submit_button.setText("Successfuly created")
         else:
-            self.submit_button.setText("Define destination directory")
+            self.submit_button.setText("Define destination directory!!!")
+            QTimer.singleShot(1300, lambda: self.submit_button.setText("Submit"))
 
     def tick_all(self):
         checkbox_list = [self.c_gallery, self.c_zips, self.c_docs, self.c_codes, self.c_3d_files, self.c_apps]
@@ -67,7 +75,8 @@ class ButtonFunctions(MainWindow):
             move_files(self.dest_path_line_edit.text())
             self.run_button.setText("Completed Successfuly")
         else:
-            self.run_button.setText("Define source and destination directories!!!")
+            self.run_button.setText("Define directories!!!")
+            QTimer.singleShot(1300, lambda: self.run_button.setText("Run"))
 
     
             

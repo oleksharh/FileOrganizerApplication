@@ -117,7 +117,7 @@
              </font>
             </property>
             <property name="text">
-             <string>NOTICE: &quot;Other&quot; folder will be created by default in order to move files with not supported extension</string>
+             <string>NOTICE: &quot;Other&quot; folder will be created by default to accomodate files without a supported extension</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

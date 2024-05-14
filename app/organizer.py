@@ -1,27 +1,29 @@
 import os
 import shutil
-import time
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 
 src_dir = None
+dest_dir = None
 
 def modify_src(new_value: str):
     global src_dir
     src_dir = new_value
     print(src_dir)
 
-dest_dir = None
+
 
 def modify_dest(new_value: str):
     global dest_dir
     dest_dir = new_value
     print(dest_dir)
 
+
+
 (dest_zips, dest_documents, dest_photos, dest_videos, 
 dest_codes, dest_threeD, dest_applications, dest_other) = [None] * 8
 folders = []
 file_types = dict()
+
+
 
 # DEFINES FOLDERS TO BE CREATED IF DESTINATION DIRECTORY 
 # IS EMPTY AND USER CHOSE TO CREATE THEM
@@ -51,6 +53,8 @@ def define_chosen_directories(checked_boxes: list):
                 checked_copy.pop(0)
         print("done")
 
+
+
 # | File extensions to use while sorting |
 zips = ["zip"]
 documents = ["xlsx", "pdf", "txt", "pptx", "docx"]
@@ -60,10 +64,14 @@ codes = ['py', 'cpp', 'c', 'java', 'html', 'css', 'js', 'php', 'rb', 'swift', "s
 threeD = ['obj', 'stl', 'fbx', 'blend', 'dae', '3ds', 'ply', 'max', 'ma', 'x3d', "blend1"]
 applications = ['exe', 'dmg', 'apk', 'app', 'deb', 'rpm', 'msi', 'bin', 'jar', 'sh']
 
+
+
 # FUNCTION TO CREATE FOLDERS IN TEH DIRECTORY PATH(FOLDER)
 def create_folders():
     for folder_path in folders:
         os.makedirs(folder_path, exist_ok=True)
+
+
 
 def dest_folders_list(dest_dir: str):
 
@@ -82,6 +90,8 @@ def dest_folders_list(dest_dir: str):
             if folder.lower() == folder_name:
                 globals()["dest_" + category] = dest_dir + "/" + folder
                 file_types.update({category: extension})
+
+
 
 def move_files(dest_dir: str):
     dest_folders_list(dest_dir)
@@ -128,37 +138,3 @@ def move_files(dest_dir: str):
                 print("2")
             except FileNotFoundError:
                 print("3")
-
-# if __name__ == "__main__":
-
-#     event_handler = FileSystemEventHandler()
-
-#     if not run_create_folders:
-#         create_folders(dest_dir)
-#         run_create_folders = True
-#         print("Folders have been created")
-
-#     def on_modified(event):
-#         move_files(src_dir)
-
-#     event_handler.on_modified = on_modified 
-
-#     observer = Observer() 
-#     observer.schedule(event_handler, src_dir, recursive=False) # recursive=False - only watches the directory itself, recursive=True - watches the directory and all subdirectories
-#     observer.start() 
-
-#     try: 
-#         while True:
-#             time.sleep(1)
-#     except KeyboardInterrupt:
-#         observer.stop()
-
-#     observer.join()
-
-
-
-
-######################################################## Script to create it as executable,
-###  pyinstaller --onefile --noconsole organizer.py  ### but before running it, make sure
-######################################################## that you have pyinstaller module installed
-                                                        
