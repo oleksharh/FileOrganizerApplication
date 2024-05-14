@@ -9,16 +9,19 @@ class MainWindow(QMainWindow):
         loadUi(r"C:\Python\FileOrganizerApplication\ui\interface.ui", self)
         self.setWindowTitle("FileOrganizer")
 
-        self.frame_4.setStyleSheet("QWidget { border: 1px solid black; }")
-        self.frame_2.setStyleSheet("QWidget { border: 1px solid black; }")
-        self.frame_3.setStyleSheet("QWidget { border: 1px solid black; }")
-        self.frame_5.setStyleSheet("QWidget { border: 1px solid black; }")
-        self.frame_6.setStyleSheet("QWidget { border: 1px solid black; }")
+        # Apply styles to the frames
+        self.setFrameStyles()
 
-        # Set background colors for each frame
-        self.frame_4.setStyleSheet("background-color: grey;")
-        self.frame_2.setStyleSheet("background-color: grey;")
-        self.frame_3.setStyleSheet("background-color: grey;")
-        self.frame_5.setStyleSheet("background-color: grey;")
-        self.frame_6.setStyleSheet("background-color: grey;")
+    def setFrameStyles(self):
+        # Apply style sheet to each frame to add rounded corners
+        self.applyRoundedCorners(self.frame_4)
+        self.applyRoundedCorners(self.frame_2)
+        self.applyRoundedCorners(self.frame_3)
+        self.applyRoundedCorners(self.frame_5)
+        self.applyRoundedCorners(self.frame_6)
+
+    def applyRoundedCorners(self, frame):
+        # Apply style sheet to add rounded corners to the frame
+        frame.setStyleSheet("QFrame#{} {{ border: 1px solid black; border-radius: 10px; background-color: grey; }}".format(frame.objectName()))
+
 
