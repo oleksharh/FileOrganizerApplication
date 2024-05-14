@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>750</height>
+    <width>1078</width>
+    <height>680</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -280,6 +280,19 @@
                </property>
                <property name="text">
                 <string>Applications</string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignLeft">
+              <widget class="QPushButton" name="tick_all_button">
+               <property name="minimumSize">
+                <size>
+                 <width>75</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Tick All</string>
                </property>
               </widget>
              </item>

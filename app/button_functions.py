@@ -12,6 +12,7 @@ class ButtonFunctions(MainWindow):
         self.browse_and_submit_button_2.clicked.connect(self.dest_browse_button)   
         self.submit_button.clicked.connect(self.submit_create_directories)
         self.run_button.clicked.connect(self.run_move_files)
+        self.tick_all_button.clicked.connect(self.tick_all)
 
     def src_browse_button(self):
         folder_path = QFileDialog.getExistingDirectory(self, "Choose Source Folder", r"C:/")
@@ -47,7 +48,19 @@ class ButtonFunctions(MainWindow):
             self.submit_button.setText("Successfuly created")
         else:
             self.submit_button.setText("Define destination directory")
-            
+
+    def tick_all(self):
+        checkbox_list = [self.c_gallery, self.c_zips, self.c_docs, self.c_codes, self.c_3d_files, self.c_apps]
+        all_checked = all(check_box.isChecked() for check_box in checkbox_list)
+
+        if all_checked:
+            for checkbox in checkbox_list:
+                checkbox.setChecked(False)
+            self.tick_all_button.setText('Tick All')
+        else:
+            for checkbox in checkbox_list:
+                checkbox.setChecked(True)
+            self.tick_all_button.setText('Untick All')
 
     def run_move_files(self):
         if os.path.isdir(self.src_path_line_edit.text()) and os.path.isdir(self.dest_path_line_edit.text()):

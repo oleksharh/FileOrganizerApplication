@@ -151,6 +151,7 @@ class MainWindow(QMainWindow):
         self.applyRoundedCornersAndHoverEffect(self.browse_and_submit_button_2)
         self.applyRoundedCornersAndHoverEffect(self.submit_button)
         self.applyRoundedCornersAndHoverEffect(self.run_button)
+        self.applyRoundedCornersAndHoverEffect(self.tick_all_button)
 
     def applyRoundedCorners(self, frame):
         frame.setStyleSheet("QFrame#{} {{ border: 1px solid black; border-radius: 10px; background-color: #1F2833; }}".format(frame.objectName()))
