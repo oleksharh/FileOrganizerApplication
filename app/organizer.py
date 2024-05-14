@@ -18,7 +18,7 @@ def modify_dest(new_value: str):
     dest_dir = new_value
     print(dest_dir)
 
-(dest_zip, dest_documents, dest_photos, dest_videos, 
+(dest_zips, dest_documents, dest_photos, dest_videos, 
 dest_codes, dest_threeD, dest_applications, dest_other) = [None] * 8
 folders = []
 file_types = dict()
@@ -34,7 +34,7 @@ def define_chosen_directories(checked_boxes: list):
         dest_to_create = {
             'dest_photos': dest_dir + r"/Gallery/Photos",
             'dest_videos': dest_dir + r"/Gallery/Videos",
-            'dest_zip': dest_dir + r"/Zip",
+            'dest_zips': dest_dir + r"/Zips",
             'dest_documents': dest_dir + r"/Documents",
             'dest_codes': dest_dir + r"/Codes",
             'dest_threeD': dest_dir + r"/3D",
@@ -70,7 +70,7 @@ def dest_folders_list(dest_dir: str):
     file_types_attributes = [
             ("gallery","photos", photos),
             ("gallery", "videos", videos),
-            ("zip", "zip", zips),
+            ("zips", "zips", zips),
             ("documents", "documents", documents),
             ("codes", "codes", codes),
             ("3d","threeD", threeD),
