@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>main_window_body</class>
+ <widget class="QMainWindow" name="main_window_body">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -76,7 +76,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0" colspan="3" alignment="Qt::AlignBottom">
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="create_folders_label">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -110,14 +110,14 @@
            </widget>
           </item>
           <item row="5" column="0" colspan="3" alignment="Qt::AlignTop">
-           <widget class="QLabel" name="label_6">
+           <widget class="QLabel" name="other_notice_label">
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>8</pointsize>
              </font>
             </property>
             <property name="text">
-             <string>&quot;Other&quot; folder will be created by default</string>
+             <string>NOTICE: &quot;Other&quot; folder will be created by default in order to move files with not supported extension</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -158,7 +158,7 @@
                </property>
                <property name="font">
                 <font>
-                 <pointsize>8</pointsize>
+                 <pointsize>10</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -190,6 +190,7 @@
                </property>
                <property name="font">
                 <font>
+                 <pointsize>10</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -212,6 +213,7 @@
                </property>
                <property name="font">
                 <font>
+                 <pointsize>10</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -231,6 +233,7 @@
                </property>
                <property name="font">
                 <font>
+                 <pointsize>10</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -250,6 +253,7 @@
                </property>
                <property name="font">
                 <font>
+                 <pointsize>10</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -269,6 +273,7 @@
                </property>
                <property name="font">
                 <font>
+                 <pointsize>10</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -300,7 +305,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="file_organizer">
             <property name="font">
              <font>
               <pointsize>30</pointsize>
@@ -338,7 +343,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="1" column="0" colspan="2" alignment="Qt::AlignVCenter">
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="move_label">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -380,7 +385,7 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <widget class="QLabel" name="label_7">
+              <widget class="QLabel" name="from_label">
                <property name="font">
                 <font>
                  <pointsize>10</pointsize>
@@ -407,7 +412,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_8">
+              <widget class="QLabel" name="to_label">
                <property name="font">
                 <font>
                  <pointsize>10</pointsize>
@@ -479,16 +484,35 @@
          <layout class="QGridLayout" name="gridLayout_2">
           <item row="2" column="1">
            <widget class="QPushButton" name="browse_and_submit_button_2">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="text">
              <string>Browse</string>
             </property>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QLineEdit" name="dest_path_line_edit"/>
+           <widget class="QLineEdit" name="dest_path_line_edit">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
+           </widget>
           </item>
           <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="dest_label">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -526,17 +550,36 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="1" column="0">
-           <widget class="QLineEdit" name="src_path_line_edit"/>
+           <widget class="QLineEdit" name="src_path_line_edit">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <italic>true</italic>
+             </font>
+            </property>
+           </widget>
           </item>
           <item row="1" column="1">
            <widget class="QPushButton" name="browse_and_submit_button_1">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="text">
              <string>Browse</string>
             </property>
            </widget>
           </item>
           <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="src_label">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>

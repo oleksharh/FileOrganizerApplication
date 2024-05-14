@@ -44,7 +44,7 @@ class ButtonFunctions(MainWindow):
             define_chosen_directories(checked_buttons)
             create_folders()
             
-            self.submit_button.setText("Folders have been successfuly created")
+            self.submit_button.setText("Successfuly created")
         else:
             self.submit_button.setText("Define destination directory")
             
