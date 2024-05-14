@@ -49,12 +49,10 @@ class CustomTitleBar(QWidget):
 
         self.setStyleSheet("""
             QWidget {
-                background-color: #333333;
                 color: #66FCF1;
                 font-weight: bold;
             }
             QLabel {
-                color: #FFFFFF;
                 background-color: transparent;
             }
             QPushButton {
@@ -65,6 +63,7 @@ class CustomTitleBar(QWidget):
             }
             QPushButton:hover {
                 background-color: #FF0000;
+                color: white;
             }
         """)
 
@@ -89,14 +88,13 @@ class MainWindow(QMainWindow):
         self.title_bar = CustomTitleBar(self)
         self.setMenuWidget(self.title_bar)
 
-        self.setStyleSheet("QWidget#main_window_body { background-color: #0B0C10; border-radius: 10px }")
+        self.setStyleSheet("QWidget#main_window_body { background-color: #0B0C10; }")
 
         self.setFrameStyles()
         self.setButtonStyles()
         self.setTextStyles()
         self.setLineEditStyles()
         self.setCheckBoxStyles()
-        
 
     def setLineEditStyles(self):
         self.src_path_line_edit.setStyleSheet("QLineEdit { background-color: #0B0C10; border: 0px #0B0C10; border-radius: 10px; color: #C5C6C7; }")
@@ -113,7 +111,7 @@ class MainWindow(QMainWindow):
     def applyCheckBoxStyles(self, check_box):
         check_box.setStyleSheet('''         
         QCheckBox {
-            color: #C5C6C7;  /* Text color */
+            color: #C5C6C7;
         }
         QCheckBox::indicator {
             width: 20px;
@@ -134,15 +132,18 @@ class MainWindow(QMainWindow):
         self.applyRoundedCorners(self.frame_6)
 
     def setTextStyles(self):
+        # Blue Colored Text
         self.applyTextColorBlue(self.file_organizer)
         self.applyTextColorBlue(self.src_label)
         self.applyTextColorBlue(self.dest_label)
         self.applyTextColorBlue(self.create_folders_label)
         self.applyTextColorBlue(self.move_label)
-        self.applyTextColorGrey(self.other_notice_label)
-        self.applyTextColorBlue(self.from_label)
-        self.applyTextColorGrey(self.label_description_src)
         self.applyTextColorBlue(self.to_label)
+        self.applyTextColorBlue(self.from_label)
+
+        # Grey Colored Text
+        self.applyTextColorGrey(self.other_notice_label)
+        self.applyTextColorGrey(self.label_description_src)
         self.applyTextColorGrey(self.label_description_dest)
 
     def setButtonStyles(self):
