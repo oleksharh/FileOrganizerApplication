@@ -11,28 +11,16 @@ class ButtonFunctions(MainWindow):
     def __init__(self):
         super().__init__()
         
-        self.browse_and_submit_button_1.clicked.connect(self.src_browse_button)
-        self.browse_and_submit_button_2.clicked.connect(self.dest_browse_button)   
+        self.browse_and_submit_button_1.clicked.connect(lambda: self.browse_button_func(self.src_path_line_edit, "Choose Source Directory"))
+        self.browse_and_submit_button_2.clicked.connect(lambda: self.browse_button_func(self.dest_path_line_edit, "Choose Destination Directory"))   
         self.submit_button1.clicked.connect(self.submit_create_directories)
         self.submit_button2.clicked.connect(self.run_move_files)
         self.tick_all_button.clicked.connect(self.tick_all)
 
-    def src_browse_button(self):
-        folder_path = QFileDialog.getExistingDirectory(self, "Choose Source Folder", r"C:/")
+    def browse_button_func(self, line_edit_name, title_text):
+        folder_path = QFileDialog.getExistingDirectory(self, title_text, r"C:/")
         if folder_path:
-            self.src_path_line_edit.setText(folder_path)
-            new_value_src = self.src_path_line_edit.text()
-            modify_src(new_value_src)
-
-            new_value_dest = self.dest_path_line_edit.text()
-            modify_dest(new_value_dest)
-            self.label_description_src.setText(new_value_src)
-            self.label_description_dest.setText(new_value_dest)
-
-    def dest_browse_button(self):
-        folder_path = QFileDialog.getExistingDirectory(self, "Choose Destination Folder", r"C:/")
-        if folder_path:
-            self.dest_path_line_edit.setText(folder_path)
+            line_edit_name.setText(folder_path)
             new_value_src = self.src_path_line_edit.text()
             modify_src(new_value_src)
 
@@ -56,11 +44,9 @@ class ButtonFunctions(MainWindow):
             create_folders()
             
             self.output_submit_button(self.submit_button1, "Successfully Created", button_success)
-
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button1))
         else:
             self.output_submit_button(self.submit_button1, "Define destination directory!!!", button_error)
-
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button1))
 
     def tick_all(self):
@@ -81,11 +67,9 @@ class ButtonFunctions(MainWindow):
             move_files(self.dest_path_line_edit.text())
             
             self.output_submit_button(self.submit_button2, "Completed Successfully", button_success)
-
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button2))
         else:
             self.output_submit_button(self.submit_button2, "Define directories!!!", button_error)
-
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button2))
 
     def reset_submit_button(self, button):
