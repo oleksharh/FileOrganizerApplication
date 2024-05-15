@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QPushButton, QHBoxLayout, QWidget, QHBoxLayout, QLabel
 from PyQt5.QtGui import QPixmap
 
-
 class CustomTitleBar(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)

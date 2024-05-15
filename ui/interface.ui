@@ -97,7 +97,7 @@
            </widget>
           </item>
           <item row="2" column="2" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QPushButton" name="submit_button">
+           <widget class="QPushButton" name="submit_button1">
             <property name="minimumSize">
              <size>
               <width>150</width>
@@ -376,7 +376,7 @@
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QPushButton" name="run_button">
+           <widget class="QPushButton" name="submit_button2">
             <property name="minimumSize">
              <size>
               <width>150</width>
@@ -384,7 +384,7 @@
              </size>
             </property>
             <property name="text">
-             <string>Run</string>
+             <string>Submit</string>
             </property>
            </widget>
           </item>

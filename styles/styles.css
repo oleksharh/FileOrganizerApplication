@@ -54,7 +54,7 @@ QFrame#frame_8 {
 }
 
 QPushButton {
-    border: 1px solid black;
+    border: 0px solid black;
     border-radius: 10px;
     background-color: #66FCF1;
     color: #0B0C10;
@@ -62,7 +62,7 @@ QPushButton {
 }
 
 QPushButton:hover {
-    border: 1px solid black;
+    border: 1px solid #66FCF1;
     border-radius: 10px;
     background-color: #45A29E;
     color: #0B0C10;
@@ -130,7 +130,7 @@ QLineEdit {
 
 QCheckBox {
     color: #C5C6C7;
-    background-color: #1F2833; 
+    background-color: transparent; 
 }
 
 QCheckBox::indicator {
