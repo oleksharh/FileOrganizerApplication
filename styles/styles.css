@@ -7,11 +7,9 @@ dark-gray: #0B0C10;
 blue-gray: #1F2833; 
 */
 
-
 QWidget {
     background-color: #0B0C10;
 }
-
 
 QFrame#frame_2 {
     border: 1px solid black;
@@ -59,6 +57,14 @@ QPushButton {
     border: 1px solid black;
     border-radius: 10px;
     background-color: #66FCF1;
+    color: #0B0C10;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #45A29E;
     color: #0B0C10;
     font-weight: bold;
 } 
