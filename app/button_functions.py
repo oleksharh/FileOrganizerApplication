@@ -5,6 +5,7 @@ import os
 from PyQt5.QtCore import QTimer
 
 button_error = "background-color: #FF0000; color: white; font-weight: bold;"
+button_success = "background-color: green; color: white; font-weight: bold;"
 
 class ButtonFunctions(MainWindow):
     def __init__(self):
@@ -54,14 +55,11 @@ class ButtonFunctions(MainWindow):
             define_chosen_directories(checked_buttons)
             create_folders()
             
-            self.submit_button1.setText("Successfuly created")
-            self.submit_button1.setEnabled(False)
+            self.output_submit_button(self.submit_button1, "Successfully Created", button_success)
 
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button1))
         else:
-            self.submit_button1.setText("Define destination directory!!!")
-            self.submit_button1.setEnabled(False)
-            self.submit_button1.setStyleSheet(button_error)
+            self.output_submit_button(self.submit_button1, "Define destination directory!!!", button_error)
 
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button1))
 
@@ -81,14 +79,12 @@ class ButtonFunctions(MainWindow):
     def run_move_files(self):
         if os.path.isdir(self.src_path_line_edit.text()) and os.path.isdir(self.dest_path_line_edit.text()):
             move_files(self.dest_path_line_edit.text())
-            self.submit_button2.setText("Completed Successfuly")
-            self.submit_button2.setEnabled(False)
+            
+            self.output_submit_button(self.submit_button2, "Completed Successfully", button_success)
 
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button2))
         else:
-            self.submit_button2.setText("Define directories!!!")
-            self.submit_button2.setEnabled(False)
-            self.submit_button2.setStyleSheet(button_error)
+            self.output_submit_button(self.submit_button2, "Define directories!!!", button_error)
 
             QTimer.singleShot(1300, lambda: self.reset_submit_button(self.submit_button2))
 
@@ -97,5 +93,9 @@ class ButtonFunctions(MainWindow):
         button.setEnabled(True)
         button.setText("Submit")
         
+    def output_submit_button(self, button, text, stylesheet):
+        button.setText(text)
+        button.setEnabled(False)
+        button.setStyleSheet(stylesheet)
         
         
