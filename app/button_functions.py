@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QFileDialog
 from app.organizer import modify_dest, define_chosen_directories, modify_src, create_folders, move_files
-from app.ui_modifications import MainWindow
+from app.app_logic import MainWindow
 import os
 from PyQt5.QtCore import QTimer
 

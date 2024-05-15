@@ -1,0 +1,139 @@
+/* 
+light-cyan: #66FCF1;
+dark-cyan: #45A29E;
+red-saturated: #FF0000;
+silver: #C5C6C7;
+dark-gray: #0B0C10;
+blue-gray: #1F2833; 
+*/
+
+
+QWidget {
+    background-color: #0B0C10;
+}
+
+
+QFrame#frame_2 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #1F2833;
+}
+
+QFrame#frame_3 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #1F2833;
+}
+
+QFrame#frame_4 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #1F2833;
+}
+
+QFrame#frame_5 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #1F2833;
+}
+
+QFrame#frame_6 {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #1F2833;
+}
+
+QFrame#frame_7 {
+    border: 0px;
+    border-radius: 10px;
+    background-color: #1F2833;
+}
+
+QFrame#frame_8 {
+    border: 0px;
+    border-radius: 10px;
+    background-color: #1F2833;
+}
+
+QPushButton {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #66FCF1;
+    color: #0B0C10;
+    font-weight: bold;
+} 
+
+QPushButton#close_button {
+    border: 0px;
+    border-radius: 0px;
+    background-color: transparent;
+    color: #66FCF1;
+    font-weight: bold;
+} 
+
+QPushButton#minimize_button {
+    border: 0px;
+    border-radius: 0px;
+    background-color: transparent;
+    color: #66FCF1;
+    font-weight: bold;
+}
+
+QPushButton#close_button:hover {
+    background-color: #FF0000;
+    color: white;
+    font-weight: bold;
+}
+
+QPushButton#minimize_button:hover {
+    background-color: #C5C6C7;
+    color: black;
+    font-weight: bold;
+}
+
+QLabel#icon_label { 
+    padding: 3px;
+}
+
+QLabel {
+    background-color: transparent;
+    color: #66FCF1;
+}
+
+QLabel#label_description_src {
+    background-color: transparent;
+    color: #C5C6C7;
+}
+
+QLabel#label_description_dest {
+    background-color: transparent;
+    color: #C5C6C7;
+}
+
+QLabel#other_notice_label {
+    background-color: transparent;
+    color: #C5C6C7;
+}
+
+QLineEdit {
+    background-color: #0B0C10;
+    border: 0px;
+    border-radius: 10px;
+    color: #C5C6C7;
+}
+
+QCheckBox {
+    color: #C5C6C7;
+    background-color: #1F2833; 
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #0B0C10;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #66FCF1;
+}
