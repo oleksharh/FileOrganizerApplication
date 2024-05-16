@@ -59,6 +59,7 @@ QPushButton {
     background-color: #66FCF1;
     color: #0B0C10;
     font-weight: bold;
+    font-family: "Nunito", sans-serif;
 }
 
 QPushButton:hover {
@@ -67,6 +68,7 @@ QPushButton:hover {
     background-color: #45A29E;
     color: #0B0C10;
     font-weight: bold;
+    font-family: "Nunito", sans-serif;
 } 
 
 QPushButton#close_button {
@@ -77,24 +79,26 @@ QPushButton#close_button {
     font-weight: bold;
 } 
 
-QPushButton#minimize_button {
-    border: 0px;
-    border-radius: 0px;
-    background-color: transparent;
-    color: #66FCF1;
-    font-weight: bold;
-}
-
 QPushButton#close_button:hover {
     background-color: #FF0000;
     color: white;
     font-weight: bold;
 }
 
-QPushButton#minimize_button:hover {
-    background-color: #C5C6C7;
-    color: black;
+QPushButton#minimize_button {
+    border: 0px;
+    border-radius: 0px;
+    background-color: transparent;
+    color: #C5C6C7;
     font-weight: bold;
+    font-family: sans-serif;
+}
+
+QPushButton#minimize_button:hover {
+    color: #0B0C10;
+    background-color: #C5C6C7;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 
 QLabel#icon_label { 
@@ -104,21 +108,25 @@ QLabel#icon_label {
 QLabel {
     background-color: transparent;
     color: #66FCF1;
+    font-family: "Nunito", sans-serif;
 }
 
 QLabel#label_description_src {
     background-color: transparent;
     color: #C5C6C7;
+    font-family: "Nunito", sans-serif;
 }
 
 QLabel#label_description_dest {
     background-color: transparent;
     color: #C5C6C7;
+    font-family: "Nunito", sans-serif;
 }
 
 QLabel#other_notice_label {
     background-color: transparent;
     color: #C5C6C7;
+    font-family: "Nunito", sans-serif;
 }
 
 QLineEdit {
@@ -130,7 +138,8 @@ QLineEdit {
 
 QCheckBox {
     color: #C5C6C7;
-    background-color: transparent; 
+    background-color: transparent;
+    font-family: "Nunito", sans-serif;
 }
 
 QCheckBox::indicator {

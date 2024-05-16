@@ -7,3 +7,6 @@ if __name__ == "__main__":
     window = ButtonFunctions()
     window.show()
     sys.exit(app.exec_())
+
+
+# ADD LINE EDIT LIGHT UP WITH DIFFERENT COLOR IF DIRECTORY IS WRONG OR NOT DEFINED

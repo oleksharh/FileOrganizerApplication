@@ -11,7 +11,7 @@ import os
 from PyQt5.QtCore import QTimer
 
 button_error = "background-color: #FF0000; color: white; font-weight: bold;"
-button_success = "background-color: green; color: white; font-weight: bold;"
+button_success = "background-color: #00FF00; color: 000000; font-weight: bold;"
 
 
 class ButtonFunctions(MainWindow):
