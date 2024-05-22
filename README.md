@@ -10,7 +10,10 @@ To install and run the application, follow these steps:
 
 2. **Unzip the project**: Extract the contents of the zip file to a directory of your choice.
 
-3. **Navigate to the project directory**: Open a terminal or command prompt and navigate to the directory where you extracted the project files.
+3. **Navigate to the project directory**: Open a terminal or command prompt and navigate to the directory where you extracted the project files. For example, if you extracted the files to a directory named "FileOrganizerApplication", you can use the following command:
+    ```
+    cd path/to/your/project/directory/FileOrganizerApplication
+    ```
 
 4. **Install dependencies**: Make sure you have Python installed on your system. If not, download and install it from [python.org](https://www.python.org/). Then, install the required dependencies by running the following command:
     ```
@@ -21,7 +24,10 @@ To install and run the application, follow these steps:
 Once you have installed the application, you can run it using the following steps:
 
 1. **Navigate to the project directory**: If you're not already in the project directory, navigate to it using the terminal or command prompt.
-
+    ```
+    cd path/to/your/project/directory/FileOrganizerApplication
+    ```
+    
 2. **Run the main script**: Start the application by running the `main.py` script. You can do this by executing the following command:
     ```
     python main.py
