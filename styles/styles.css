@@ -77,12 +77,14 @@ QPushButton#close_button {
     background-color: transparent;
     color: #66FCF1;
     font-weight: bold;
+    font-size: 14px;
 } 
 
 QPushButton#close_button:hover {
     background-color: #FF0000;
     color: white;
     font-weight: bold;
+    font-size: 14px;
 }
 
 QPushButton#minimize_button {
@@ -92,6 +94,7 @@ QPushButton#minimize_button {
     color: #C5C6C7;
     font-weight: bold;
     font-family: sans-serif;
+    font-size: 14px;
 }
 
 QPushButton#minimize_button:hover {
@@ -99,6 +102,7 @@ QPushButton#minimize_button:hover {
     background-color: #C5C6C7;
     font-weight: bold;
     font-family: sans-serif;
+    font-size: 14px;
 }
 
 QLabel#icon_label { 

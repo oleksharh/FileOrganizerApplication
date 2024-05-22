@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1078</width>
-    <height>680</height>
+    <width>1020</width>
+    <height>580</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>850</width>
-    <height>500</height>
+    <width>1020</width>
+    <height>580</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>1200</width>
-    <height>750</height>
+    <width>1000000</width>
+    <height>1000000</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -34,8 +34,8 @@
    </property>
    <property name="maximumSize">
     <size>
-     <width>1200</width>
-     <height>750</height>
+     <width>10000</width>
+     <height>10000</height>
     </size>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -43,14 +43,14 @@
      <widget class="QFrame" name="frame">
       <property name="minimumSize">
        <size>
-        <width>800</width>
-        <height>450</height>
+        <width>0</width>
+        <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>1200</width>
-        <height>750</height>
+        <width>10000</width>
+        <height>10000</height>
        </size>
       </property>
       <property name="frameShape">
@@ -67,6 +67,12 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>480</width>
+           <height>330</height>
+          </size>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -116,9 +122,15 @@
           </item>
           <item row="5" column="0" colspan="3" alignment="Qt::AlignTop">
            <widget class="QLabel" name="other_notice_label">
+            <property name="minimumSize">
+             <size>
+              <width>458</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="font">
              <font>
-              <pointsize>8</pointsize>
+              <pointsize>9</pointsize>
              </font>
             </property>
             <property name="text">
@@ -142,8 +154,8 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>200</width>
-              <height>150</height>
+              <width>280</width>
+              <height>200</height>
              </size>
             </property>
             <property name="frameShape">
@@ -292,9 +304,14 @@
               <widget class="QPushButton" name="tick_all_button">
                <property name="minimumSize">
                 <size>
-                 <width>75</width>
-                 <height>30</height>
+                 <width>120</width>
+                 <height>35</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
                </property>
                <property name="text">
                 <string>Tick All</string>
@@ -311,7 +328,7 @@
         <widget class="QFrame" name="frame_6">
          <property name="minimumSize">
           <size>
-           <width>0</width>
+           <width>980</width>
            <height>50</height>
           </size>
          </property>
@@ -352,6 +369,12 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>480</width>
+           <height>330</height>
+          </size>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -498,6 +521,12 @@
        </item>
        <item row="1" column="1" alignment="Qt::AlignVCenter">
         <widget class="QFrame" name="frame_3">
+         <property name="minimumSize">
+          <size>
+           <width>480</width>
+           <height>80</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -509,9 +538,14 @@
            <widget class="QPushButton" name="browse_and_submit_button_2">
             <property name="minimumSize">
              <size>
-              <width>100</width>
+              <width>120</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
             </property>
             <property name="text">
              <string>Browse</string>
@@ -565,6 +599,12 @@
        </item>
        <item row="1" column="0">
         <widget class="QFrame" name="frame_2">
+         <property name="minimumSize">
+          <size>
+           <width>480</width>
+           <height>80</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -592,9 +632,14 @@
            <widget class="QPushButton" name="browse_and_submit_button_1">
             <property name="minimumSize">
              <size>
-              <width>100</width>
+              <width>120</width>
               <height>30</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
             </property>
             <property name="text">
              <string>Browse</string>

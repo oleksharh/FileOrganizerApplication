@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QPushButton, QHBoxLayout, QWidget, QHBoxLayout, QLabel
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import Qt
 
 class CustomTitleBar(QWidget):
     def __init__(self, parent=None):
@@ -20,11 +21,11 @@ class CustomTitleBar(QWidget):
         title_label = QLabel("")
         layout.addWidget(title_label)
 
-        minimize_button = QPushButton("—")
-        minimize_button.setObjectName("minimize_button")
-        minimize_button.setFixedSize(30, 30)
-        minimize_button.clicked.connect(self.parent.showMinimized)
-        layout.addWidget(minimize_button)
+        self.minimize_button = QPushButton("—")
+        self.minimize_button.setObjectName("minimize_button")
+        self.minimize_button.setFixedSize(30, 30)
+        self.minimize_button.clicked.connect(self.parent.showMinimized)
+        layout.addWidget(self.minimize_button)
 
         close_button = QPushButton("X")
         close_button.setObjectName("close_button")
@@ -43,3 +44,4 @@ class CustomTitleBar(QWidget):
 
     def mouseReleaseEvent(self, event):
         self.mouse_pos = None
+
