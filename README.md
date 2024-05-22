@@ -38,6 +38,6 @@ If you're interested in contributing to the development of this application, fee
 If you have any questions, suggestions, or issues regarding the application, please feel free to open an issue on the [GitHub repository](https://github.com/oleksharh/FileOrganizerApplication/issues).
 
 ## License
-This project is licensed under the MIT License. Visit the [LICENSE](http://www.apache.org/licenses/) link for details.
+This project is licensed under the Apache-2.0 License. Visit the [LICENSE](http://www.apache.org/licenses/) link for details.
 
 Happy organizing!
