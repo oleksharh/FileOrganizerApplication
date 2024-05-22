@@ -28,9 +28,9 @@ Once you have installed the application, you can run it using the following step
     cd path/to/your/project/directory/FileOrganizerApplication
     ```
     
-2. **Run the main script**: Start the application by running the `main.py` script. You can do this by executing the following command:
+2. **Run the main script**: Start the application by running the `run_app.bat` batch file. You can do this by executing the following command in the terminal or command prompt:
     ```
-    python main.py
+    run_app.bat
     ```
 
 3. **Use the application**: Follow the on-screen instructions to specify the source directory and set up rules for organizing files based on their types.
