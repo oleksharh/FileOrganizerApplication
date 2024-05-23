@@ -97,14 +97,22 @@ class ButtonFunctions(MainWindow):
         if os.path.isdir(self.src_path_line_edit.text()) and os.path.isdir(
             self.dest_path_line_edit.text()
         ):
-            move_files(self.dest_path_line_edit.text())
+            move_files_var = move_files(self.dest_path_line_edit.text())
 
-            self.output_submit_button(
-                self.submit_button2, "Completed Successfully", button_success
-            )
-            QTimer.singleShot(
-                1300, lambda: self.reset_submit_button(self.submit_button2)
-            )
+            if move_files_var:
+                self.output_submit_button(
+                    self.submit_button2, "Completed Successfully", button_success
+                )
+                QTimer.singleShot(
+                    1300, lambda: self.reset_submit_button(self.submit_button2)
+                )
+            else:
+                self.output_submit_button(
+                self.submit_button2, "Define directories!!!", button_error
+                )
+                QTimer.singleShot(
+                    1300, lambda: self.reset_submit_button(self.submit_button2)
+                )
         else:
             self.output_submit_button(
                 self.submit_button2, "Define directories!!!", button_error

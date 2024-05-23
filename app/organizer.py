@@ -51,6 +51,8 @@ def define_chosen_directories(checked_boxes: list):
                 print(folders)
             else:
                 checked_copy.pop(0)
+        
+        folders.append(dest_dir + "/Other")
         print("done")
 
 
@@ -96,45 +98,56 @@ def dest_folders_list(dest_dir: str):
 def move_files(dest_dir: str):
     dest_folders_list(dest_dir)
     print(file_types)
+    folder_other_exists = False
 
-    for file in os.listdir(src_dir):
+    for folder in os.listdir(dest_dir):
+        if folder == "Other":
+            folder_other_exists = True
 
-        file_path = os.path.join(src_dir, file)
+    if folder_other_exists:
 
-        if os.path.isfile(file_path):
-            file_extension = file.split('.')[-1].lower()
-            print(file_extension)
-            
-            dest_other = dest_dir + r"/Other"
-            destination = dest_other
-            
-            print(file_types)
-            for category, extensions in file_types.items():
-                if file_extension in extensions:
-                    destination = globals()["dest_" + category]
-                    break
+        for file in os.listdir(src_dir):
 
-            print(destination, file)
-            destination_path = os.path.join(destination, file)
+            file_path = os.path.join(src_dir, file)
 
-            try:
-                if not file_extension == 'part':
-                    if os.path.exists(destination_path):
+            if os.path.isfile(file_path):
+                file_extension = file.split('.')[-1].lower()
+                print(file_extension)
+                
+                dest_other = dest_dir + r"/Other"
+                destination = dest_other
+                
+                print(file_types)
+                for category, extensions in file_types.items():
+                    if file_extension in extensions:
+                        destination = globals()["dest_" + category]
+                        break
 
-                        file_name_parts = file.split('.')[:-1]  
-                        file_name_to_change = '.'.join(file_name_parts) + '-Copy'  
-                        file_name_final = file_name_to_change + '.' + file_extension  
-                        destination_path = os.path.join(destination, file_name_final) 
-                        # | 4 lines above change name of a file by adding                      |
-                        # | -Copy suffixs so it can be then moved to the destination directory |
+                print(destination, file)
+                destination_path = os.path.join(destination, file)
+
+                try:
+                    if not file_extension == 'part':
+                        if os.path.exists(destination_path):
+
+                            file_name_parts = file.split('.')[:-1]  
+                            file_name_to_change = '.'.join(file_name_parts) + '-Copy'  
+                            file_name_final = file_name_to_change + '.' + file_extension  
+                            destination_path = os.path.join(destination, file_name_final) 
+                            # | 4 lines above change name of a file by adding                      |
+                            # | -Copy suffixs so it can be then moved to the destination directory |
 
 
-                        shutil.move(file_path, destination_path)
+                            shutil.move(file_path, destination_path)
+                        else:
+                            shutil.move(file_path, destination_path)
                     else:
-                        shutil.move(file_path, destination_path)
-                else:
-                    print("1")
-            except PermissionError:
-                print("2")
-            except FileNotFoundError:
-                print("3")
+                        print("1")
+                except PermissionError:
+                    print("2")
+                except FileNotFoundError:
+                    print("3")
+    else:
+        return False
+
+    return True
