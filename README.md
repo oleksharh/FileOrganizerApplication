@@ -10,7 +10,7 @@ To install and run the application, follow these steps:
 
 2. **Unzip the project**: Extract the contents of the zip file to a directory of your choice.
 
-## Usage
+## Windows
 Once you have installed the application, you can run it using the following steps:
 
 1. **Navigate to the project directory**: If you're not already in the project directory, navigate to it using the terminal or command prompt.
@@ -22,10 +22,18 @@ Once you have installed the application, you can run it using the following step
     ```
     run_app.bat
     ```
+## Linux/macOS
+Once you have installed the application, you can run it using the following steps:
 
-3. **Use the application**: Follow the on-screen instructions to specify the source directory and set up rules for organizing files based on their types.
-
-4. **Enjoy organized files**: Sit back and let the application organize your files automatically!
+1. **Make the shell script executable**: Run the following command to make the `run_app.sh` script executable (only needed once):
+    ```
+    chmod +x run_app.sh
+    ```
+    
+2. **Run the main script**: Start the application by running the `run_app.sh` script. You can do this by executing the following command in the terminal:
+    ```
+    run_app.sh
+    ```
 
 ## Contributing
 If you're interested in contributing to the development of this application, feel free to fork the repository, make your changes, and submit a pull request. Contributions are always welcome!
