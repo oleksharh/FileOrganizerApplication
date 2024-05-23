@@ -21,11 +21,11 @@ class CustomTitleBar(QWidget):
         title_label = QLabel("")
         layout.addWidget(title_label)
 
-        self.minimize_button = QPushButton("—")
-        self.minimize_button.setObjectName("minimize_button")
-        self.minimize_button.setFixedSize(30, 30)
-        self.minimize_button.clicked.connect(self.parent.showMinimized)
-        layout.addWidget(self.minimize_button)
+        minimize_button = QPushButton("—")
+        minimize_button.setObjectName("minimize_button")
+        minimize_button.setFixedSize(30, 30)
+        minimize_button.clicked.connect(self.parent.showMinimized)
+        layout.addWidget(minimize_button)
 
         close_button = QPushButton("X")
         close_button.setObjectName("close_button")
