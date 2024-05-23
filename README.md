@@ -10,15 +10,15 @@ To install and run the application, follow these steps:
 
 2. **Unzip the project**: Extract the contents of the zip file to a directory of your choice.
 
-## Windows
-Once you have installed the application, you can run it using the following steps:
-
-1. **Navigate to the project directory**: If you're not already in the project directory, navigate to it using the terminal or command prompt.
+3. **Navigate to the project directory**: If you're not already in the project directory, navigate to it using the terminal or command prompt.
     ```
     cd path/to/your/project/directory/FileOrganizerApplication
     ```
+
+## Windows
+Once you have installed the application, you can run it using the following steps:
     
-2. **Run the main script**: Start the application by running the `run_app.bat` batch file. You can do this by executing the following command in the terminal or command prompt:
+1. **Run the main script**: Start the application by running the `run_app.bat` batch file. You can do this by executing the following command in the terminal or command prompt:
     ```
     run_app.bat
     ```
