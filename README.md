@@ -1,5 +1,7 @@
 # File Organizer Application
 
+![Here should have been or here is a File Organizer Preview](https://github.com/oleksharh/FileOrganizerApplication/main/screenshots/file_organizer_preview.png)
+
 ## Introduction
 This file organizer application is a Python-based tool designed to help you organize your files efficiently. It allows you to specify directories for different file types and automatically moves files from a source directory to their corresponding destination directories based on their types.
 
