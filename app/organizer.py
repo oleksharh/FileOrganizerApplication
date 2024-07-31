@@ -158,3 +158,9 @@ def move_files(dest_dir: str):
         return False
 
     return True
+
+
+
+
+# TODO - Add Copy suffix if file already exists; - Add progress bar; - Add skipping of corrupted files; - Check space in the dest to src to be able to move sufficiently;
+# TODO - ADD configuration options (User would be able to chose their own); - Add logs for user understanding and further debugging
