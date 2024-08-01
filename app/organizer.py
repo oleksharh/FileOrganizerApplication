@@ -5,6 +5,20 @@ import shutil
 src_dir = None
 dest_dir = None
 
+# Define file extensions for each folder category
+zips = ["zip"]
+documents = ["xlsx", "pdf", "txt", "pptx", "docx"]
+photos = ["png", "jpg", "jpeg", "jpeg", "bmp", "gif", "tiff ", "tif", "raw", "cr2", "nef", "arw", "psd"]
+videos = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'mkv', 'webm', 'mpeg', 'mpg', 'm4v']
+codes = ['py', 'cpp', 'c', 'java', 'html', 'css', 'js', 'php', 'rb', 'swift', "sql", "csv", "circ", "asm"]
+threeD = ['obj', 'stl', 'fbx', 'blend', 'dae', '3ds', 'ply', 'max', 'ma', 'x3d', "blend1"]
+applications = ['exe', 'dmg', 'apk', 'app', 'deb', 'rpm', 'msi', 'bin', 'jar', 'sh']
+
+# Define folder variables and lists to store folder paths and file types
+dest_zips, dest_documents, dest_photos, dest_videos, dest_codes, dest_threeD, dest_applications, dest_other = [None] * 8
+folders = []
+file_types = dict()
+
 def modify_src(new_value: str):
     """
     Modifies the source directory.
@@ -23,17 +37,12 @@ def modify_dest(new_value: str):
     dest_dir = new_value
     print(f"Destination directory set to: {dest_dir}")
 
-# Define folder variables and lists to store folder paths and file types
-dest_zips, dest_documents, dest_photos, dest_videos, dest_codes, dest_threeD, dest_applications, dest_other = [None] * 8
-folders = []
-file_types = dict()
+
 
 def folders_exist(dest_dir):
     '''
     Checks if some folders already exist in the
     destination directory and returns bool list
-    so define_chosen_directories can be more 
-    efficient and viable
     '''
     checked_folders = [False for i in range(7)]
 
@@ -70,7 +79,6 @@ def define_chosen_directories(dest_dir, checked_boxes: list):
     if all(existent_folders):
         return
 
-
     for i in range(7):
         if checked_copy[i] == existent_folders[i] and existent_folders[i]:
             checked_copy[i] = False
@@ -99,20 +107,6 @@ def define_chosen_directories(dest_dir, checked_boxes: list):
         folders.append(os.path.join(dest_dir, "Other")) # default destination dir
         print("Done defining folders.")
 
-
-
-
-# Define file extensions for each folder category
-zips = ["zip"]
-documents = ["xlsx", "pdf", "txt", "pptx", "docx"]
-photos = ["png", "jpg", "jpeg", "jpeg", "bmp", "gif", "tiff ", "tif", "raw", "cr2", "nef", "arw", "psd"]
-videos = ['mp4', 'avi', 'mov', 'wmv', 'flv', 'mkv', 'webm', 'mpeg', 'mpg', 'm4v']
-codes = ['py', 'cpp', 'c', 'java', 'html', 'css', 'js', 'php', 'rb', 'swift', "sql", "csv", "circ", "asm"]
-threeD = ['obj', 'stl', 'fbx', 'blend', 'dae', '3ds', 'ply', 'max', 'ma', 'x3d', "blend1"]
-applications = ['exe', 'dmg', 'apk', 'app', 'deb', 'rpm', 'msi', 'bin', 'jar', 'sh']
-
-
-
 def create_folders():
     """
     Creates folders in the destination directory.
@@ -120,8 +114,6 @@ def create_folders():
     for folder_path in folders:
         os.makedirs(folder_path, exist_ok=True)
         print(f"Created folder: {folder_path}")
-
-
 
 def dest_folders_list(dest_dir: str):
     """
@@ -151,16 +143,6 @@ def dest_folders_list(dest_dir: str):
             if folder == folder_name:
                 globals()["dest_" + category] = os.path.join(dest_dir, folder)
                 file_types.update({category: extension})
-        
-    # print(file_types)
-
-# dest_folders_list(r"C:/Testing/Destination")
-
-            # ("Gallery","photos", photos),
-            # ("Gallery", "videos", videos),
-
-
-
 
 def move_files(dest_dir: str):
     """
@@ -218,7 +200,5 @@ def move_files(dest_dir: str):
     return True
 
 
-
-# TODO - Do not allow to run create folders whenever they had already been defined before.
-# TODO - Add Copy suffix if file already exists; - Add progress bar; - Add skipping of corrupted files; - Check space in the dest to src to be able to move sufficiently;
+# TODO - Add imporved suffix for Copies; Add progress bar; - Add skipping of corrupted files; - Check space in the dest to src to be able to move sufficiently;
 # TODO - ADD configuration options (User would be able to chose their own); - Add logs for user understanding and further debugging
