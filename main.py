@@ -10,3 +10,4 @@ if __name__ == "__main__":
 
 
 # TODO ADD LINE EDIT LIGHT UP WITH DIFFERENT COLOR IF DIRECTORY IS WRONG OR NOT DEFINED
+# TODO add cache to be able to retreive whatever i need faster

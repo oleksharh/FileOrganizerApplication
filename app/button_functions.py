@@ -67,8 +67,9 @@ class ButtonFunctions(MainWindow):
                 self.c_3d_files.isChecked(),
                 self.c_apps.isChecked(),
             ]
+            dest_dir = self.dest_path_line_edit.text()
 
-            define_chosen_directories(checked_buttons)
+            define_chosen_directories(dest_dir, checked_buttons)
             create_folders()
 
             self.output_submit_button(

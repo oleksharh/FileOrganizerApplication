@@ -28,15 +28,52 @@ dest_zips, dest_documents, dest_photos, dest_videos, dest_codes, dest_threeD, de
 folders = []
 file_types = dict()
 
+def folders_exist(dest_dir):
+    '''
+    Checks if some folders already exist in the
+    destination directory and returns bool list
+    so define_chosen_directories can be more 
+    efficient and viable
+    '''
+    checked_folders = [False for i in range(7)]
 
+    if dest_dir is not None:
+        checked_folders = []
 
-def define_chosen_directories(checked_boxes: list):
+        dest_to_create = {
+                'dest_photos': dest_dir + r"/Gallery/Photos",
+                'dest_videos': dest_dir + r"/Gallery/Videos",
+                'dest_zips': dest_dir + r"/Zips",
+                'dest_documents': dest_dir + r"/Documents",
+                'dest_codes': dest_dir + r"/Codes",
+                'dest_threeD': dest_dir + r"/3D",
+                'dest_applications': dest_dir + r"/Applications"
+            }
+
+        for path in dest_to_create.values():
+            if os.path.exists(path):
+                checked_folders.append(True)
+            else:
+                checked_folders.append(False)
+
+    return checked_folders
+
+def define_chosen_directories(dest_dir, checked_boxes: list):
     """
     Defines folders to be created in the destination directory.
     checked_boxes: List of booleans indicating which folders to create
     """
     checked_copy = checked_boxes[:] # Copy the list of checked boxes
     checked_copy.insert(0, checked_boxes[0])
+    existent_folders = folders_exist(dest_dir)
+
+    if all(existent_folders):
+        return
+
+
+    for i in range(7):
+        if checked_copy[i] == existent_folders[i] and existent_folders[i]:
+            checked_copy[i] = False
 
     if dest_dir is not None and src_dir is not None:
 
@@ -51,7 +88,7 @@ def define_chosen_directories(checked_boxes: list):
         }
 
         for variable, path in dest_to_create.items():
-            if checked_copy[0]:
+            if checked_copy[0]: # Checked_copy stores bool values
                 globals()[variable] = path
                 checked_copy.pop(0)
                 folders.append(globals()[variable])
@@ -59,8 +96,9 @@ def define_chosen_directories(checked_boxes: list):
             else:
                 checked_copy.pop(0)
         
-        folders.append(os.path.join(dest_dir, "Other"))
+        folders.append(os.path.join(dest_dir, "Other")) # default destination dir
         print("Done defining folders.")
+
 
 
 
@@ -92,20 +130,35 @@ def dest_folders_list(dest_dir: str):
     dest_dir: Destination directory path
     """
     file_types_attributes = [
-            ("gallery","photos", photos),
-            ("gallery", "videos", videos),
-            ("zips", "zips", zips),
-            ("documents", "documents", documents),
-            ("codes", "codes", codes),
-            ("3d","threeD", threeD),
-            ("applications", "applications", applications),
+            ("Zips", "zips", zips),
+            ("Documents", "documents", documents),
+            ("Codes", "codes", codes),
+            ("3D","threeD", threeD),
+            ("Applications", "applications", applications),
     ]
 
     for folder in os.listdir(dest_dir):
-        for folder_name, category, extension in file_types_attributes:
-            if folder.lower() == folder_name:
+        # print(folder)
+        if folder == "Gallery":
+            conc_dest_dir = os.path.join(dest_dir, folder)
+            for sub_folder in os.listdir(conc_dest_dir):
+                category = extension = sub_folder.lower()
+                # print(category)
+                globals()["dest_" + category] = os.path.join(dest_dir, folder, sub_folder)
+                file_types.update({category: globals()[extension]})
+
+        for folder_name, category, extension in file_types_attributes: 
+            if folder == folder_name:
                 globals()["dest_" + category] = os.path.join(dest_dir, folder)
                 file_types.update({category: extension})
+        
+    # print(file_types)
+
+# dest_folders_list(r"C:/Testing/Destination")
+
+            # ("Gallery","photos", photos),
+            # ("Gallery", "videos", videos),
+
 
 
 
@@ -115,10 +168,14 @@ def move_files(dest_dir: str):
     sorting them based on their extensions.
     dest_dir: Destination directory path
     """
-    dest_folders_list(dest_dir)
-    print(f"File types to be sorted: {file_types}")
+    existent_folders = folders_exist(dest_dir)
+    if not any(existent_folders):
+        return False
 
-    folder_other_exists = "Other" in os.listdir(dest_dir)
+    dest_folders_list(dest_dir)
+    print(f"File types: {file_types}")
+
+    folder_other_exists = "Other" in os.listdir(dest_dir) # bool check whether Other exists
 
     if folder_other_exists:
         for file in os.listdir(src_dir):
@@ -154,6 +211,7 @@ def move_files(dest_dir: str):
                     print(f"PermissionError: Cannot move {file}")
                 except FileNotFoundError:
                     print(f"FileNotFoundError: {file} not found")
+                    print(destination_path, file_path)
     else:
         return False
 
@@ -161,6 +219,6 @@ def move_files(dest_dir: str):
 
 
 
-
+# TODO - Do not allow to run create folders whenever they had already been defined before.
 # TODO - Add Copy suffix if file already exists; - Add progress bar; - Add skipping of corrupted files; - Check space in the dest to src to be able to move sufficiently;
 # TODO - ADD configuration options (User would be able to chose their own); - Add logs for user understanding and further debugging
