@@ -10,11 +10,8 @@ from app.organizer import (
 )
 from app.app_init import MainWindow
 
-
-
 button_error = "background-color: #FF0000; color: white; font-weight: bold;"
 button_success = "background-color: #00FF00; color: 000000; font-weight: bold;"
-
 
 class ButtonFunctions(MainWindow):
     def __init__(self):

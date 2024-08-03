@@ -37,8 +37,6 @@ def modify_dest(new_value: str):
     dest_dir = new_value
     print(f"Destination directory set to: {dest_dir}")
 
-
-
 def folders_exist(dest_dir):
     '''
     Checks if some folders already exist in the
@@ -64,6 +62,8 @@ def folders_exist(dest_dir):
                 checked_folders.append(True)
             else:
                 checked_folders.append(False)
+
+    # TODO Create check for dest_dir if it == None so it won't produce bugs
 
     return checked_folders
 
@@ -107,7 +107,9 @@ def define_chosen_directories(dest_dir, checked_boxes: list):
         folders.append(os.path.join(dest_dir, "Other")) # default destination dir
         print("Done defining folders.")
 
-def create_folders():
+    # TODO Create check for dest_dir if it == None so it won't produce bugs
+
+def create_folders() -> None:
     """
     Creates folders in the destination directory.
     """
@@ -121,6 +123,7 @@ def dest_folders_list(dest_dir: str):
     and their respective file extensions.
     dest_dir: Destination directory path
     """
+    
     file_types_attributes = [
             ("Zips", "zips", zips),
             ("Documents", "documents", documents),
@@ -202,3 +205,4 @@ def move_files(dest_dir: str):
 
 # TODO - Add imporved suffix for Copies; Add progress bar; - Add skipping of corrupted files; - Check space in the dest to src to be able to move sufficiently;
 # TODO - ADD configuration options (User would be able to chose their own); - Add logs for user understanding and further debugging
+# TODO - fix types used as None or str for directories to use only str for easier understanding in the future
