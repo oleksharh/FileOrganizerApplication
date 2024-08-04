@@ -19,14 +19,22 @@ class CustomLineEdit(QLineEdit):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.original_style = self.styleSheet()
+        self.initial_text = ""
         print(self.original_style)
 
     def mousePressEvent(self, event):
-        self.original_style = self.styleSheet()
-        print(self.original_style)
+        self.initial_text = self.text()  # Capture the initial text
+        print(f"Initial style: {self.original_style}")
+        print(f"Initial text: {self.initial_text}")
         self.setStyleSheet(L_E_STYLESHEET)
         super().mousePressEvent(event)
 
     def focusOutEvent(self, event):
-        self.setStyleSheet(self.original_style)
+        current_text = self.text()  # Get the current text
+        print(f"Current text: {current_text}")
+        if self.initial_text == current_text:
+            self.setStyleSheet(self.original_style)
         super().focusOutEvent(event)
+
+
+# TODO fix and make it work when clicked and focused out
