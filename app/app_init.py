@@ -9,10 +9,14 @@ def load_stylesheet(filename):
     filename: Path to the CSS file
     Returns: CSS stylesheet as a string
     """
-    with open(filename, "r") as f:
-        return f.read()
+    try:
+        with open(filename, "r") as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"Stylesheet file not found: {filename}")
+        return ""
     
-stylesheet = load_stylesheet("styles/styles.css")
+MAIN_STYLESHEET = load_stylesheet("styles/main_stylesheet.css")
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -28,7 +32,7 @@ class MainWindow(QMainWindow):
         self.setMenuWidget(self.title_bar)
 
         # Apply custom stylesheet
-        self.setStyleSheet(stylesheet)
+        self.setStyleSheet(MAIN_STYLESHEET)
 
         # Set initial window position and size
         self.setWindowPosition()

@@ -1,4 +1,5 @@
 import os
+from typing import Final
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QTimer
 from app.organizer import (
@@ -10,8 +11,23 @@ from app.organizer import (
 )
 from app.app_init import MainWindow
 
-button_error = "background-color: #FF0000; color: white; font-weight: bold;"
-button_success = "background-color: #00FF00; color: 000000; font-weight: bold;"
+def load_stylesheet(filename):
+    """
+    Loads a CSS stylesheet from a file.
+    filename: Path to the CSS file
+    Returns: CSS stylesheet as a string
+    """
+    try:
+        with open(filename, "r") as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"Stylesheet file not found: {filename}")
+        return ""
+    
+ERROR_SYLESHEET: Final[str] = load_stylesheet("styles/error_stylesheet.css")
+SUCCESS_SYLESHEET: Final[str] = load_stylesheet("styles/success_stylesheet.css")
+L_E_STYLESHEET: Final[str] = load_stylesheet("styles/l_e_stylesheet.css")
+NOTE_STYLESHEET: Final[str] = load_stylesheet("styles/note_stylesheet.css")
 
 class ButtonFunctions(MainWindow):
     def __init__(self):
@@ -21,6 +37,8 @@ class ButtonFunctions(MainWindow):
         self.browse_and_submit_button_1.clicked.connect(self.browse_button_func)
         self.browse_and_submit_button_2.clicked.connect(self.browse_button_func)
 
+        self.src_path_line_edit.setPlaceholderText("Enter source directory...")
+        self.dest_path_line_edit.setPlaceholderText("Enter destination directory...")
         self.src_path_line_edit.textChanged.connect(self.on_text_changed)
         self.dest_path_line_edit.textChanged.connect(self.on_text_changed)
 
@@ -51,25 +69,36 @@ class ButtonFunctions(MainWindow):
             line_edit_name.setText(folder_path)
 
             # Update source and destination directories
-            new_value_src = self.src_path_line_edit.text()
-            modify_src(new_value_src)
+            # new_value_src = self.src_path_line_edit.text()
+            # modify_src(new_value_src)
 
-            new_value_dest = self.dest_path_line_edit.text()
-            modify_dest(new_value_dest)
+            # new_value_dest = self.dest_path_line_edit.text()
+            # modify_dest(new_value_dest)
 
-            # Update labels in the UI with selected paths
-            self.label_description_src.setText(new_value_src)
-            self.label_description_dest.setText(new_value_dest)
+            # # Update labels in the UI with selected paths
+            # self.label_description_src.setText(new_value_src)
+            # self.label_description_dest.setText(new_value_dest)
 
     def on_text_changed(self, text):
         '''
         Verifies the directories and checks for their existence
         '''
-        sender = self.sender()
-        sender_name = sender.objectName()
+        ############################
+        # TODO finish the function #
+        ############################
 
         if os.path.exists(text):
-            self.src_path_line_edit.setStyleSheet(button_success)
+            self.sender().setStyleSheet(SUCCESS_SYLESHEET)
+            if self.sender().objectName() == "src_path_line_edit":
+                new_value_src = self.sender().text()
+                modify_src(new_value_src)
+                self.label_description_src.setText(new_value_src)
+            if self.sender().objectName() == "dest_path_line_edit":
+                new_value_dest = self.sender().text()
+                modify_dest(new_value_dest)
+                self.label_description_dest.setText(new_value_dest)
+        else:
+            self.sender().setStyleSheet(L_E_STYLESHEET)
 
     def submit_create_directories(self):
         """
@@ -90,14 +119,16 @@ class ButtonFunctions(MainWindow):
             create_folders()
 
             self.output_submit_button(
-                self.submit_button1, "Successfully Created", button_success
+                self.submit_button1, "Successfully Created", SUCCESS_SYLESHEET
             )
             QTimer.singleShot(
                 1300, lambda: self.reset_submit_button(self.submit_button1)
             )
         else:
+            self.dest_path_line_edit.setStyleSheet(NOTE_STYLESHEET)
+            self.src_path_line_edit.setStyleSheet(NOTE_STYLESHEET)
             self.output_submit_button(
-                self.submit_button1, "Define destination directory!!!", button_error
+                self.submit_button1, "Define destination directory!!!", ERROR_SYLESHEET
             )
             QTimer.singleShot(
                 1300, lambda: self.reset_submit_button(self.submit_button1)
@@ -139,21 +170,21 @@ class ButtonFunctions(MainWindow):
 
             if move_files_var:
                 self.output_submit_button(
-                    self.submit_button2, "Completed Successfully", button_success
+                    self.submit_button2, "Completed Successfully", SUCCESS_SYLESHEET
                 )
                 QTimer.singleShot(
                     1300, lambda: self.reset_submit_button(self.submit_button2)
                 )
             else:
                 self.output_submit_button(
-                self.submit_button2, "Define directories!!!", button_error
+                self.submit_button2, "Define directories!!!", ERROR_SYLESHEET
                 )
                 QTimer.singleShot(
                     1300, lambda: self.reset_submit_button(self.submit_button2)
                 )
         else:
             self.output_submit_button(
-                self.submit_button2, "Define directories!!!", button_error
+                self.submit_button2, "Define directories!!!", ERROR_SYLESHEET
             )
             QTimer.singleShot(
                 1300, lambda: self.reset_submit_button(self.submit_button2)

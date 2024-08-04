@@ -1,0 +1,12 @@
+QPushButton {
+    background-color: #FF0000;
+    color: white;
+    font-weight: bold;
+}
+
+QLineEdit {
+    background-color: red;
+    border: 0px;
+    border-radius: 10px;
+    color: #C5C6C7;
+}

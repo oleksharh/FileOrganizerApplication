@@ -553,7 +553,7 @@
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QLineEdit" name="dest_path_line_edit">
+           <widget class="CustomLineEdit" name="dest_path_line_edit">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -613,7 +613,7 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="1" column="0">
-           <widget class="QLineEdit" name="src_path_line_edit">
+           <widget class="CustomLineEdit" name="src_path_line_edit">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -681,6 +681,13 @@
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>app.custom_line_edit</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
