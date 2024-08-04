@@ -18,24 +18,34 @@ class ButtonFunctions(MainWindow):
         super().__init__()
         
         # Connect buttons to their respective functions
-        self.browse_and_submit_button_1.clicked.connect(
-            lambda: self.browse_button_func(
-                self.src_path_line_edit, "Choose Source Directory"
-            )
-        )
-        self.browse_and_submit_button_2.clicked.connect(
-            lambda: self.browse_button_func(
-                self.dest_path_line_edit, "Choose Destination Directory"
-            )
-        )
+        self.browse_and_submit_button_1.clicked.connect(self.browse_button_func)
+        self.browse_and_submit_button_2.clicked.connect(self.browse_button_func)
+
+        self.src_path_line_edit.textChanged.connect(self.on_text_changed)
+        self.dest_path_line_edit.textChanged.connect(self.on_text_changed)
+
         self.submit_button1.clicked.connect(self.submit_create_directories)
+
         self.submit_button2.clicked.connect(self.run_move_files)
+
         self.tick_all_button.clicked.connect(self.tick_all)
 
-    def browse_button_func(self, line_edit_name, title_text):
+    def browse_button_func(self):
         """
         Opens a directory selection dialog and sets the selected path in the line edit.
         """
+        sender = self.sender()
+        sender_name = sender.objectName()
+        
+        # Finds out which button triggered the function
+        # and initializes appropriate variables and values
+        if sender_name == "browse_and_submit_button_1":
+            line_edit_name = self.src_path_line_edit
+            title_text = "Choose Source Directory"
+        if sender_name == "browse_and_submit_button_2":
+            line_edit_name = self.dest_path_line_edit
+            title_text = "Choose Destination Directory"
+
         folder_path = QFileDialog.getExistingDirectory(self, title_text, r"C:/")
         if folder_path:
             line_edit_name.setText(folder_path)
@@ -50,6 +60,16 @@ class ButtonFunctions(MainWindow):
             # Update labels in the UI with selected paths
             self.label_description_src.setText(new_value_src)
             self.label_description_dest.setText(new_value_dest)
+
+    def on_text_changed(self, text):
+        '''
+        Verifies the directories and checks for their existence
+        '''
+        sender = self.sender()
+        sender_name = sender.objectName()
+
+        if os.path.exists(text):
+            self.src_path_line_edit.setStyleSheet(button_success)
 
     def submit_create_directories(self):
         """
