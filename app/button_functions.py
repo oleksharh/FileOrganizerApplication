@@ -66,7 +66,7 @@ class ButtonFunctions(MainWindow):
         Update the stylesheet based 
         on whether the path exists
         '''
-        if os.path.exists(text):
+        if os.path.isdir(text):
             self.sender().setStyleSheet(SUCCESS_SYLESHEET)
             if self.sender().objectName() == "src_path_line_edit":
                 self.update_src_directory(text)
@@ -98,7 +98,6 @@ class ButtonFunctions(MainWindow):
             self.create_directories()
         else:
             self.show_error("Define destination directory!!!", self.submit_button1)
-            self.src_path_line_edit.setStyleSheet(NOTE_STYLESHEET)
             self.dest_path_line_edit.setStyleSheet(NOTE_STYLESHEET)
 
     def create_directories(self):
@@ -140,12 +139,17 @@ class ButtonFunctions(MainWindow):
         '''
         Validate directories and move files
         '''
-        if self.directories_are_valid():
+        src_exists, dest_exists = self.directories_are_valid()
+        if src_exists and dest_exists:
             if move_files(self.dest_path_line_edit.text()):
                 self.show_success("Completed Successfully", self.submit_button2)
             else:
-                self.show_error("Define directories!!!", self.submit_button2)
+                self.show_error("Error!!!", self.submit_button2)
         else:
+            if not src_exists:
+                self.src_path_line_edit.setStyleSheet(NOTE_STYLESHEET)
+            if not dest_exists:
+                self.dest_path_line_edit.setStyleSheet(NOTE_STYLESHEET)
             self.show_error("Define directories!!!", self.submit_button2)
 
     def directories_are_valid(self):
@@ -153,7 +157,7 @@ class ButtonFunctions(MainWindow):
         Check if both source and destination 
         directories are valid
         '''
-        return os.path.isdir(self.src_path_line_edit.text()) and os.path.isdir(self.dest_path_line_edit.text())
+        return os.path.isdir(self.src_path_line_edit.text()), os.path.isdir(self.dest_path_line_edit.text())
 
     def show_success(self, message, button):
         '''
