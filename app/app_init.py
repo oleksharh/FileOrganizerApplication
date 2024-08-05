@@ -3,20 +3,7 @@ from PyQt5.QtCore import QSize, Qt
 from PyQt5.uic import loadUi
 from app.custom_title_bar import CustomTitleBar
 
-def load_stylesheet(filename):
-    """
-    Loads a CSS stylesheet from a file.
-    filename: Path to the CSS file
-    Returns: CSS stylesheet as a string
-    """
-    try:
-        with open(filename, "r") as f:
-            return f.read()
-    except FileNotFoundError:
-        print(f"Stylesheet file not found: {filename}")
-        return ""
-    
-MAIN_STYLESHEET = load_stylesheet("styles/main_stylesheet.css")
+from app.constants import MAIN_STYLESHEET
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -31,7 +18,6 @@ class MainWindow(QMainWindow):
         self.title_bar = CustomTitleBar(self)
         self.setMenuWidget(self.title_bar)
 
-        # Apply custom stylesheet
         self.setStyleSheet(MAIN_STYLESHEET)
 
         # Set initial window position and size
